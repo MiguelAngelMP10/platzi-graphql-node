@@ -5,9 +5,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "dev": "yarn start",
-    "test": "jest src"
+    "build": "prisma generate && yarn clean && tsc --build && yarn copyfiles",
+    "start": "node ../dist/api",
+    "dev": "nodemon index.ts",
+    "test": "jest src",
+    "clean": "rimraf ../dist/api",
+    "copyfiles": "copyfiles src/schema.graphql public/* ../dist/api"
   },
   "dependencies": {
     "@prisma/client": "^3.1.1",
@@ -15,12 +18,14 @@
     "apollo-server-express": "^3.3.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "copyfiles": "^2.4.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "graphql": "^15.6.1",
     "jose": "^4.3.7",
     "nodemon": "^2.0.13",
     "prompt": "^1.2.0",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.2.1"
   },
   "devDependencies": {

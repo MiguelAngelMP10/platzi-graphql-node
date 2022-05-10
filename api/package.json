@@ -4,6 +4,9 @@
   "description": "Backend de nuestra aplicación con una API en GraphQL",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "build": "prisma generate && yarn clean && tsc --build && yarn copyfiles",
     "start": "node ../dist/api",
